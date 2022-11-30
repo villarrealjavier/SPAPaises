@@ -11,7 +11,9 @@ import { HttpClient } from '@angular/common/http';
 export class PorPaisComponent implements OnInit {
 
   constructor(private paisService: PaisServiceService, private http: HttpClient) { }
- paises:PaisSearch []=[];
+  paises:PaisSearch[]=[];
+  nuevo: string =""
+
   ngOnInit(): void {
   }
   
@@ -25,9 +27,8 @@ export class PorPaisComponent implements OnInit {
   return this.paisService.results
   }
 
-  buscar ( termino:string){
-    this.nuevo=termino;
-    this.paisService.buscarpais( this.nuevo)
+  buscar(){
+    this.paisService.buscarpais(this.nuevo)
     .subscribe({
         next: (resp) =>{
             this.paises= resp;
@@ -39,6 +40,5 @@ export class PorPaisComponent implements OnInit {
   }
  
 
-  @Input() nuevo: string =""
 
 }

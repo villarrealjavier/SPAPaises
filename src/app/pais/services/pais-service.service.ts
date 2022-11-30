@@ -24,7 +24,6 @@ export class PaisServiceService {
 
   buscarpais(query:string):Observable<PaisSearch[]>{
     let clean = query.trim();
-
     return this.http.get<PaisSearch[]>(`${this.url}${clean}`)
 
   }
